@@ -50,6 +50,37 @@ else:
     print("We have 3 texts to be analyzed.")
 
 print(separator)
+number = input("Enter a number between 1 and 3 to select: ")
+print(separator)
 
+if not number.isdigit() or int(number) < 1 or int (number) > 3:
+    print("You have entered an incorrect number or symbol! Please try again...")
+    exit()
 
+text = TEXTS[int(number) - 1]
+clean_words = [word.strip(',.:/') for word in text.split()]
+print("There are " , len(clean_words) , "words in the selected text." )
 
+title_case = 0
+upper_case = 0
+lower_case = 0
+numeric = 0
+summary = 0
+
+for word in clean_words:
+    if word.istitle():
+        title_case = title_case + 1
+    elif word.isupper():
+        upper_case = upper_case + 1
+    elif word.islower():
+        lower_case = lower_case + 1
+    elif word.isdigit():
+        numeric = numeric +1
+        summary = summary + int(word)
+
+print("There are ", title_case, "titlecase words.")
+print("There are ", upper_case, "uppercase words.")
+print("There are ", lower_case, "lower_case words.")
+print("There are ", numeric, "numeric strings.")
+print("The sum of all the number ", summary)
+print(separator)
