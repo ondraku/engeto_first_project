@@ -66,6 +66,7 @@ upper_case = 0
 lower_case = 0
 numeric = 0
 summary = 0
+words_length = dict()
 
 for word in clean_words:
     if word.istitle():
@@ -78,9 +79,22 @@ for word in clean_words:
         numeric = numeric +1
         summary = summary + int(word)
 
+    words_length[len(word)] = words_length.setdefault(len(word), 0) + 1
+
 print("There are ", title_case, "titlecase words.")
 print("There are ", upper_case, "uppercase words.")
 print("There are ", lower_case, "lower_case words.")
 print("There are ", numeric, "numeric strings.")
 print("The sum of all the number ", summary)
 print(separator)
+
+print("LEN |", "OCCURENCES |", "NR. |")
+print(separator)
+
+for index, frequency in enumerate(words_length):
+    if index in words_length:
+        frequency = words_length.get(index)
+        print(index, "*" * frequency, frequency)
+print(separator)
+
+print("Process is finished, " + username.title() + "!")
