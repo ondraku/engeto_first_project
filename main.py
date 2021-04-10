@@ -28,3 +28,28 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
+separator = "-" * 50
+
+users = {
+    "bob" : "123",
+    "ann" : "pass123",
+    "mike" : "password123",
+    "liz" : "pass123"
+}
+
+username = input("Username: ")
+password = input("Password: ")
+
+print(separator)
+
+if users.get(username) != password:
+    print("You have entered INCORRECT username or password! Please try again...")
+    exit()
+else:
+    print("Welcome to the Text Analyzer app, " + username.title() + "!")
+    print("We have 3 texts to be analyzed.")
+
+print(separator)
+
+
+
