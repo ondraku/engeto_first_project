@@ -28,30 +28,30 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
-separator = "-" * 50
+SEPARATOR = "-" * 50
 
-users = {
-    "bob" : "123",
-    "ann" : "pass123",
-    "mike" : "password123",
-    "liz" : "pass123"
+USERS = {
+    "bob": "123",
+    "ann": "pass123",
+    "mike": "password123",
+    "liz": "pass123"
 }
 
 username = input("Username: ")
 password = input("Password: ")
 
-print(separator)
+print(SEPARATOR)
 
-if users.get(username) != password:
+if USERS.get(username) != password:
     print("You have entered INCORRECT username or password! Please try again...")
     exit()
 else:
     print("Welcome to the Text Analyzer app, " + username.title() + "!")
     print("We have 3 texts to be analyzed.")
 
-print(separator)
+print(SEPARATOR)
 number = input("Enter a number between 1 and 3 to select: ")
-print(separator)
+print(SEPARATOR)
 
 if not number.isdigit() or int(number) < 1 or int (number) > 3:
     print("You have entered an incorrect number or symbol! Please try again...")
@@ -59,7 +59,7 @@ if not number.isdigit() or int(number) < 1 or int (number) > 3:
 
 text = TEXTS[int(number) - 1]
 clean_words = [word.strip(',.:/') for word in text.split()]
-print("There are " , len(clean_words) , "words in the selected text." )
+print("There are", len(clean_words) , "words in the selected text.")
 
 title_case = 0
 upper_case = 0
@@ -76,25 +76,24 @@ for word in clean_words:
     elif word.islower():
         lower_case = lower_case + 1
     elif word.isdigit():
-        numeric = numeric +1
+        numeric = numeric + 1
         summary = summary + int(word)
 
     words_length[len(word)] = words_length.setdefault(len(word), 0) + 1
 
-print("There are ", title_case, "titlecase words.")
-print("There are ", upper_case, "uppercase words.")
-print("There are ", lower_case, "lower_case words.")
-print("There are ", numeric, "numeric strings.")
-print("The sum of all the number ", summary)
-print(separator)
+print("There are", title_case, "titlecase words.")
+print("There are", upper_case, "uppercase words.")
+print("There are", lower_case, "lower_case words.")
+print("There are", numeric, "numeric strings.")
+print("The sum of all the number", summary)
+print(SEPARATOR)
 
 print("LEN |", "OCCURENCES |", "NR. |")
-print(separator)
+print(SEPARATOR)
 
-for index, frequency in enumerate(words_length):
-    if index in words_length:
-        frequency = words_length.get(index)
-        print(index, "*" * frequency, frequency)
-print(separator)
+for length in sorted(words_length):
+    print(length, words_length.get(length) * "*", words_length.get(length), sep="|")
+
+print(SEPARATOR)
 
 print("Process is finished, " + username.title() + "!")
